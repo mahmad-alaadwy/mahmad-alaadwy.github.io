@@ -18,8 +18,8 @@ const initializer=async()=>{
     const material=new THREE.MeshBasicMaterial({color:"#0000ff"});
     const mesh =new THREE.Mesh(geometry,material);
 
-    scene.add(mesh);
-    mesh.position.set(0,-2,-3);
+   // scene.add(mesh);
+ //   mesh.position.set(0,-2,-3);
 
     const light =new THREE.HemisphereLight(0xffffffff,0xbbbbff,1);
     scene.add(light);
