@@ -31,6 +31,22 @@ const initializer=async()=>{
         return;
     }
 
+    const controller= renderer.xr.getController(0);
+    scene.add(controller);
+
+
+    controller.addEventListener("select",()=>{
+        const geometry=new THREE.BoxGeometry(.06,.06,.06);
+        const material=new THREE.MeshBasicMaterial({color:0xffffff*Math.random()});
+
+        const mesh=new THREE.Mesh(geometry,material);
+        mesh.position.applyMatrix4(controller.matrixWorld);
+        mesh.quaternion.setFromRotationMatrix(controller.matrixWorld);
+        scene.add(mesh);
+
+    });
+  
+
     let currentSession=null;
     const start =async()=>{
         arButton.textContent="END";
