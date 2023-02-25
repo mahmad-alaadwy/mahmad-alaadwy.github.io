@@ -14,9 +14,9 @@ const initializer=async()=>{
     renderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(renderer.domElement);
 
-    const geometry=new THREE.BoxGeometry(1 ,1 ,1);
-    const material=new THREE.MeshBasicMaterial({color:"#0000ff"});
-    const mesh =new THREE.Mesh(geometry,material);
+    // const geometry=new THREE.BoxGeometry(1 ,1 ,1);
+    // const material=new THREE.MeshBasicMaterial({color:"#0000ff"});
+    // const mesh =new THREE.Mesh(geometry,material);
 
    // scene.add(mesh);
  //   mesh.position.set(0,-2,-3);
