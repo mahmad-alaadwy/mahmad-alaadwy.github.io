@@ -36,7 +36,7 @@ const initializer=async()=>{
 
 
     controller.addEventListener("select",()=>{
-        const geometry=new THREE.BoxGeometry(.2,.2,.2);
+        const geometry=new THREE.BoxGeometry(.08,.08,.08);
         const material=new THREE.MeshBasicMaterial({color:0xffffff*Math.random()});
 
         const mesh=new THREE.Mesh(geometry,material);
