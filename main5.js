@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scene.add(controller);
 
 
-    const {model} = await loadmodel('./SheenChair.gltf');
+    const {model} = await loadmodel('soviet_furniture.glb');
 
     putmodel.addEventListener('click', () => {
  
