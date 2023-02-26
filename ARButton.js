@@ -55,7 +55,7 @@ class ARButton {
 				await renderer.xr.setSession( session );
 
 				button.textContent = 'STOP AR';
-				sessionInit.domOverlay.root.style.display = '';
+				//sessionInit.domOverlay.root.style.display = '';
 
 				currentSession = session;
 
@@ -66,8 +66,8 @@ class ARButton {
 				currentSession.removeEventListener( 'end', onSessionEnded );
 
 				button.textContent = 'START AR';
-				sessionInit.domOverlay.root.style.display = 'none';
-
+				//sessionInit.domOverlay.root.style.display = 'none';
+				
 				currentSession = null;
 
 			}
