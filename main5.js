@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialize = async() => {
     const container=document.querySelector("#ar-area");
     const putmodel=document.querySelector("#ar-button");
-    const turnXButton =document.querySelector("#turn-around-x");
+    const turnXButtonpos =document.querySelector("#turn-around-x-pos");
+    const turnXButtonneg =document.querySelector("#turn-around-x-neg");
     
 
     const scene = new THREE.Scene();
@@ -48,13 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
       scene.add(model);
     });
 
-    turnXButton.addEventListener("click",()=>{
+    turnXButtonpos.addEventListener("click",()=>{
         model.rotation.y+=.03;
+        });
+    turnXButtonneg.addEventListener("click",()=>{
+        model.rotation.y-=.03;
         });
 
     renderer.xr.addEventListener("sessionstart", async (e) => {
       putmodel.style.display = 'inline';
-
+      turnXButtonneg.style.display = 'inline';
+      turnXButtonpos.style.display = 'inline';
       const session = renderer.xr.getSession();
       const viewerReferenceSpace = await session.requestReferenceSpace("viewer");
       const hitTestSource = await session.requestHitTestSource({space: viewerReferenceSpace});
