@@ -14,12 +14,12 @@ const initializer=async()=>{
     renderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(renderer.domElement);
 
-    // const geometry=new THREE.BoxGeometry(1 ,1 ,1);
-    // const material=new THREE.MeshBasicMaterial({color:"#0000ff"});
-    // const mesh =new THREE.Mesh(geometry,material);
+    const geometry=new THREE.BoxGeometry(1 ,1 ,1);
+    const material=new THREE.MeshBasicMaterial({color:"#0000ff"});
+    const mesh =new THREE.Mesh(geometry,material);
 
-   // scene.add(mesh);
- //   mesh.position.set(0,-2,-3);
+    scene.add(mesh);
+    mesh.position.set(0,-2,-3);
 
     const light =new THREE.HemisphereLight(0xffffffff,0xbbbbff,1);
     scene.add(light);
@@ -36,7 +36,7 @@ const initializer=async()=>{
 
 
     controller.addEventListener("select",()=>{
-        const geometry=new THREE.BoxGeometry(.08,.08,.08);
+        const geometry=new THREE.BoxGeometry(.06,.06,.06);
         const material=new THREE.MeshBasicMaterial({color:0xffffff*Math.random()});
 
         const mesh=new THREE.Mesh(geometry,material);
