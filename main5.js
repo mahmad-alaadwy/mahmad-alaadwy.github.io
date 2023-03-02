@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     turnXButton.addEventListener("click",()=>{
-        model.rotation.y+=.03;
+        model.rotation.y+=.1;
         });
 
     renderer.xr.addEventListener("sessionstart", async (e) => {
