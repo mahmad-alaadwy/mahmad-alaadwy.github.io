@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialize = async() => {
     const container=document.querySelector("#ar-area");
     const putmodel=document.querySelector("#ar-button");
+    const turnXButton =document.querySelector("#turn-around-x");
     
 
     const scene = new THREE.Scene();
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scene.add(controller);
 
 
-    const {model} = await loadmodel('the_wizards_chair.glb');
+    const {model} = await loadmodel('./SheenChair.gltf');
 
     putmodel.addEventListener('click', () => {
  
@@ -46,6 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
       //mesh.scale.y = Math.random() * 2 + 1;
       scene.add(model);
     });
+
+    turnXButton.addEventListener("click",()=>{
+        model.rotation.y+=.03;
+        });
 
     renderer.xr.addEventListener("sessionstart", async (e) => {
       putmodel.style.display = 'inline';
