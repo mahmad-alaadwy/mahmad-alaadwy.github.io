@@ -5,6 +5,7 @@ async function loadmodel(path){
     const modelData =await loader.loadAsync(path);
     const model = modelData.scene;
     model.scale.set(2,2,2);
+
     //model.position.set(2,.02,1);
     return {model};
 }

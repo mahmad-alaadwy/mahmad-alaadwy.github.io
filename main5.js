@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     turnXButtonpos.addEventListener("click",()=>{
         model.rotation.y+=.03;
+
         });
     turnXButtonneg.addEventListener("click",()=>{
         model.rotation.y-=.03;
