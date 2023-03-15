@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialize = async() => {
     const container=document.querySelector("#ar-area");
     const putmodel=document.querySelector("#ar-button");
-    const turnXButtonpos =document.querySelector("#turn-around-x-pos");
-    const turnXButtonneg =document.querySelector("#turn-around-x-neg");
+    const turnYButtonpos =document.querySelector("#turn-around-y-pos");
+    const turnYButtonneg =document.querySelector("#turn-around-y-neg");
     
 
     const scene = new THREE.Scene();
@@ -49,18 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
       scene.add(model);
     });
 
-    turnXButtonpos.addEventListener("click",()=>{
+    turnYButtonpos.addEventListener("click",()=>{
         model.rotation.y+=.03;
 
         });
-    turnXButtonneg.addEventListener("click",()=>{
+    turnYButtonneg.addEventListener("click",()=>{
         model.rotation.y-=.03;
         });
 
     renderer.xr.addEventListener("sessionstart", async (e) => {
       putmodel.style.display = 'inline';
-      turnXButtonneg.style.display = 'inline';
-      turnXButtonpos.style.display = 'inline';
+      turnYButtonneg.style.display = 'inline';
+      turnYButtonpos.style.display = 'inline';
       const session = renderer.xr.getSession();
       const viewerReferenceSpace = await session.requestReferenceSpace("viewer");
       const hitTestSource = await session.requestHitTestSource({space: viewerReferenceSpace});
@@ -90,15 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
         renderer.clear();
         
         putmodel.style.display = 'none';
-        turnXButtonpos.style.display = 'none';
-        turnXButtonneg.style.display = 'none';
+        turnYButtonpos.style.display = 'none';
+        turnYButtonneg.style.display = 'none';
 
         renderer.setAnimationLoop(null);
-
     });
-
   }
-
   initialize();
 });
 
