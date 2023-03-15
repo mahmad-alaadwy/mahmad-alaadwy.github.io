@@ -90,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
         renderer.clear();
         
         putmodel.style.display = 'none';
+        turnXButtonpos.style.display = 'none';
+        turnXButtonneg.style.display = 'none';
 
         renderer.setAnimationLoop(null);
 
