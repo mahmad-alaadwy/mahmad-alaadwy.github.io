@@ -122,7 +122,6 @@ class ARButton {
 			button.onmouseleave = null;
 
 			button.onclick = null;
-
 		}
 
 		function showARNotSupported() {
