@@ -79,6 +79,8 @@ class ARButton {
 			button.style.cursor = 'pointer';
 			button.style.left = 'calc(50% - 50px)';
 			button.style.width = '100px';
+			button.style.background ='rgb(251, 184, 14)';
+
 
 			button.textContent = 'START AR';
 
@@ -99,10 +101,14 @@ class ARButton {
 				if ( currentSession === null ) {
 
 					navigator.xr.requestSession( 'immersive-ar', sessionInit ).then( onSessionStarted );
+					button.style.background = 'rgba(0, 0, 0, 0.1)';
+					
 
 				} else {
 
 					currentSession.end();
+					button.style.background ='rgb(251, 184, 14)';
+
 
 				}
 
