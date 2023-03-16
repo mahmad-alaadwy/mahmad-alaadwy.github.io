@@ -88,6 +88,7 @@ class ARButton {
 			button.onmouseenter = function () {
 
 				button.style.opacity = '1.0';
+				
 
 			};
 
@@ -103,6 +104,7 @@ class ARButton {
 
 					navigator.xr.requestSession( 'immersive-ar', sessionInit ).then( onSessionStarted );
 					button.style.background = 'rgba(0, 0, 0, 0.1)';
+						
 					
 
 
