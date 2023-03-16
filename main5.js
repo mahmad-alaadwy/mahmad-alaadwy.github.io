@@ -58,6 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderer.xr.addEventListener("sessionstart", async (e) => {
       putmodel.style.display = 'inline';
+    			// putmodel.style.display = '';
+
+			// putmodel.style.cursor = 'pointer';
+			// putmodel.style.left = 'calc(50% - 50px)';
+			// putmodel.style.width = '100px';
+			// putmodel.style.background = 'rgba(0, 0, 0, 0.1)';
+
       turnYButtonneg.style.display = 'inline';
       turnYButtonpos.style.display = 'inline';
 
