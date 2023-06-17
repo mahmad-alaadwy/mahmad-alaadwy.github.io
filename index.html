@@ -50,12 +50,27 @@
             opacity: .7;
 
         }
-
+        #ccolore{
+            font-weight: bolder;
+            position:fixed;
+            z-index: 1001;
+            display:none;
+            padding: 2vh;
+            margin:1vh;
+            right: 2vh;
+            top: 20%;
+            transform: translateZ(-50%);
+            border-radius: 50px;
+            background : rgba(0, 0, 0, 0.3)
+        }
+        #ccolore:hover{
+            background :rgb(251, 184, 14);
+            cursor: pointer;
+            opacity: .7;
+        }
     </style>
 </head>
 <body style="background:rgb(253, 253, 253)">
-    <h2 style="background:  rgb(251, 184, 14);text-align: center;">some components in the page</h2>
-    <h2 style="background:  rgb(251, 184, 14);text-align: center;">some components in the page</h2>
     
     <div id="ar-area" style="display: block;">
         <button id="turn-around-y-pos">
@@ -68,16 +83,13 @@
             put the model
         </button>        
         
-        <button id="ccolore" style="position:fixed;z-index: 1001;display:none;">
-            change the color
-        </button>        
+        <input id="ccolore" type="color" name="Color Picker">
+     
         
         
     </div>
 
 
-    <h2 style="background:  rgb(251, 184, 14); text-align: center;">some components in the page</h2>
-    <h2 style="background:  rgb(251, 184, 14);text-align: center;">some components in the page</h2>
     <script src="./main5.js" type="module"></script>
 
 </body>

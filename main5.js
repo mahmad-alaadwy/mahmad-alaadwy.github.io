@@ -4,6 +4,18 @@ import {ARButton} from './ARButton.js';
 import { loadmodel } from './ModelLoader.js';
 
 
+function getId() {
+  try {
+    var url_string = (window.location.href);
+    var url = new URL(url_string);
+    var name = url.searchParams.get("id");
+    return name
+  } catch (err) {
+    console.log("Issues with Parsing URL Parameter's - " + err);
+  }
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const initialize = async() => {
     const container=document.querySelector("#ar-area");
@@ -11,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const turnYButtonpos =document.querySelector("#turn-around-y-pos");
     const turnYButtonneg =document.querySelector("#turn-around-y-neg");
     const changecolor=document.querySelector("#ccolore")
+
+    // getting object name from the query string
+    const objName = getId();
+
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera();
@@ -39,24 +55,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const controller = renderer.xr.getController(0);
     scene.add(controller);
 
+    // loading the gltf model 
 
     const {model} = await loadmodel('./SheenChair.gltf');
 
-    putmodel.addEventListener('click', () => {
+    // the model by model id 
+    // const {model} = await loadmodel('./'+objName+'.gltf');
+
+    // putting the model on the raticle position
+    putmodel.addEventListener('click', async() => {
+
+      // when i load the model here its will add a new model everey time the button is clicked 
+      // const {model} = await loadmodel('./SheenChair.gltf');
       model.position.setFromMatrixPosition(reticle.matrix);
       //mesh.scale.y = Math.random() * 2 + 1;
       scene.add(model);
     });
 
+    //rotate the model to the right
     turnYButtonpos.addEventListener("click",()=>{
         model.rotation.y+=.2;
         });
 
+        
+    //rotate the model to the left
     turnYButtonneg.addEventListener("click",()=>{
         model.rotation.y-=.2;
         });
-    changecolor.addEventListener("click",()=>{
-      model.children[0].material.color=new THREE.Color(0x000ff0);
+
+
+    // changing the color of the model
+    changecolor.addEventListener("change",()=>{
+      model.children[0].material.color=new THREE.Color(changecolor.value);
+      changecolor.value=changecolor.value;
     })
 
     renderer.xr.addEventListener("sessionstart", async (e) => {
