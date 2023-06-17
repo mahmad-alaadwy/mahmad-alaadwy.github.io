@@ -1,8 +1,15 @@
-import * as THREE from './three.js';
-import {ARButton} from './ARButton.js';
+import * as THREE from '../three.js';
+import {ARButton} from '../ARButton.js';
+
+import { loadmodel } from '../ModelLoader.js';
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const initialize = async() => {
+    const container=document.querySelector("#ar-area");
+    const putmodel=document.querySelector("#ar-button");
+    
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera();
 
@@ -22,22 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer.xr.enabled = true;
 
     const arButton = ARButton.createButton(renderer, {requiredFeatures: ['hit-test'], optionalFeatures: ['dom-overlay'], domOverlay: {root: document.body}});
-    document.body.appendChild(renderer.domElement);
-    document.body.appendChild(arButton);
+    container.appendChild(renderer.domElement);
+    container.appendChild(arButton);
 
     const controller = renderer.xr.getController(0);
     scene.add(controller);
-    controller.addEventListener('select', () => {
+    putmodel.addEventListener('click', () => {
       const geometry = new THREE.BoxGeometry(0.06, 0.06, 0.06); 
       const material = new THREE.MeshBasicMaterial({ color: 0xffffff * Math.random()});
       const mesh = new THREE.Mesh(geometry, material);
-      console.log(reticle.matrix);
       mesh.position.setFromMatrixPosition(reticle.matrix);
       mesh.scale.y = Math.random() * 2 + 1;
       scene.add(mesh);
     });
 
     renderer.xr.addEventListener("sessionstart", async (e) => {
+      putmodel.style.display = 'inline';
+
       const session = renderer.xr.getSession();
       const viewerReferenceSpace = await session.requestReferenceSpace("viewer");
       const hitTestSource = await session.requestHitTestSource({space: viewerReferenceSpace});
@@ -64,7 +72,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     renderer.xr.addEventListener("sessionend", () => {
-      console.log("session end");
+        renderer.clear();
+        
+        putmodel.style.display = 'none';
+
+        renderer.setAnimationLoop(null);
+
     });
 
   }

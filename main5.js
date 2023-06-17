@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const putmodel=document.querySelector("#ar-button");
     const turnYButtonpos =document.querySelector("#turn-around-y-pos");
     const turnYButtonneg =document.querySelector("#turn-around-y-neg");
-    
+    const changecolor=document.querySelector("#ccolore")
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera();
@@ -55,6 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
     turnYButtonneg.addEventListener("click",()=>{
         model.rotation.y-=.2;
         });
+    changecolor.addEventListener("click",()=>{
+      model.children[0].material.color=new THREE.Color(0x000ff0);
+    })
 
     renderer.xr.addEventListener("sessionstart", async (e) => {
       putmodel.style.display = 'inline';
@@ -67,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       turnYButtonneg.style.display = 'inline';
       turnYButtonpos.style.display = 'inline';
+      changecolor.style.display = 'inline';
 
       const session = renderer.xr.getSession();
       const viewerReferenceSpace = await session.requestReferenceSpace("viewer");
