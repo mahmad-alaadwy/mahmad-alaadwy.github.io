@@ -131,7 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
         putmodel.style.display = 'none';
         turnYButtonpos.style.display = 'none';
         turnYButtonneg.style.display = 'none';
-
+        changecolor.style.display = 'none';
+        
         renderer.setAnimationLoop(null);
     });
   }
