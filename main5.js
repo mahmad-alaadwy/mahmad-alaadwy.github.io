@@ -57,10 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // loading the gltf model 
 
-    const {model} = await loadmodel('./SheenChair.gltf');
+    // const {model} = await loadmodel('./SheenChair.gltf');
 
     // the model by model id 
-    // const {model} = await loadmodel('./'+objName+'.gltf');
+    const {model} = await loadmodel('./'+objName+'.gltf');
 
     // putting the model on the raticle position
     putmodel.addEventListener('click', async() => {
