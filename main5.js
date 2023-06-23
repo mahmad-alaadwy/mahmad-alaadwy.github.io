@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const turnYButtonpos =document.querySelector("#turn-around-y-pos");
     const turnYButtonneg =document.querySelector("#turn-around-y-neg");
     const changecolor=document.querySelector("#ccolore")
-
+    const changecolorval=document.querySelector("#colorval")
     // getting object name from the query string
     const objName = getId();
 
@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // changing the color of the model
     changecolor.addEventListener("change",()=>{
-      model.children[0].material.color=new THREE.Color(changecolor.value);
-      changecolor.value=changecolor.value;
+      model.children[0].material.color=new THREE.Color(changecolorval.value);
+      changecolorval.value=changecolorval.value;
     })
 
     renderer.xr.addEventListener("sessionstart", async (e) => {
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         turnYButtonpos.style.display = 'none';
         turnYButtonneg.style.display = 'none';
         changecolor.style.display = 'none';
-        
+        scene.remove(model);
         renderer.setAnimationLoop(null);
     });
   }
